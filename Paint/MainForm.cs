@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Paint
 {
@@ -124,32 +125,57 @@ namespace Paint
 
         private void сохранитьКакToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (this.ActiveMdiChild != null)
+            {
+                DocumentForm Active = (DocumentForm)this.ActiveMdiChild;
+                SaveFileDialog dlg = new SaveFileDialog();
+                dlg.AddExtension = true;
+                dlg.Filter = "Windows Bitmap (*.bmp)|*.bmp| Файлы JPEG (*.jpg)|*.jpg";
+                ImageFormat[] ff = { ImageFormat.Bmp, ImageFormat.Jpeg };
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    Active.bitmap.Save(dlg.FileName, ff[dlg.FilterIndex - 1]);
+                    Active.Format = ff[dlg.FilterIndex - 1];
+                    Active.Name = dlg.FileName;
+                    Active.SaveCount++;
+                }
 
+            }
         }
 
         private void октрытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Windows Bitmap (*.bmp)|*.bmp| Файлы JPEG (*.jpeg, *.jpg)|*.jpeg;*.jpg|Все файлы ()*.*|*.*";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                var name = dlg.FileName;
+                var bitmap = Bitmap.FromFile(name);
+
+                var frm = new DocumentForm((Bitmap)bitmap);
+                frm.MdiParent = this;
+                frm.Show();
+            }
 
         }
 
         private void каскадомToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.LayoutMdi(MdiLayout.Cascade);
         }
 
         private void слеваНаправоToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            LayoutMdi(MdiLayout.TileVertical);
         }
 
         private void сверхуВнизToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            LayoutMdi(MdiLayout.TileHorizontal);
         }
 
         private void упорядочитьЗначкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -24,6 +24,12 @@ namespace Paint
             bitmap = new Bitmap(300, 200);
         }
 
+        public DocumentForm(Bitmap btmp)
+        {
+            InitializeComponent();
+            bitmap = btmp;
+        }
+
         private void DocumentForm_MouseDown(object sender, MouseEventArgs e)
         {
             x = e.X;
