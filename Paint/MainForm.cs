@@ -177,5 +177,10 @@ namespace Paint
         private void упорядочитьЗначкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
