@@ -16,7 +16,7 @@ namespace Paint
         private int x, y;
         public Bitmap bitmap;
         public int SaveCount = 0;
-        public string Name;
+        public string Name = "";
         public ImageFormat Format;
         public DocumentForm()
         {

@@ -17,11 +17,24 @@ namespace Paint
         
         public static Color Color { get; set; }
         public static int Width { get; set; }
+        public static int CurrentWidth
+        {
+            get { return Width; }
+            set
+            {
+                if (value > 0)
+                {
+                    Width = value;
+                }
+            }
+        }
 
         public MainForm()
         {
             InitializeComponent();
+            toolStripTextBox1.Text = "2";
             Color = Color.Black;
+            CurrentWidth = 2;
             Width = 3;
         }
 
@@ -37,7 +50,14 @@ namespace Paint
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (this.MdiChildren.Length == 0)
+            {
+                Application.Exit();
+            }
+            else
+            {
+
+            }
         }
 
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
@@ -186,6 +206,11 @@ namespace Paint
                 
 
             }
+        }
+
+        private void toolStripTextBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
