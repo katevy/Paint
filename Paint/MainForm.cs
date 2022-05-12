@@ -177,5 +177,12 @@ namespace Paint
         private void упорядочитьЗначкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
+
+        private void toolStripLabel2_Click(object sender, EventArgs e)
+        {
+            var frm = new DocumentForm1();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
