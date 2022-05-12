@@ -183,9 +183,7 @@ namespace Paint
             if (this.ActiveMdiChild != null)
             {
                 DocumentForm Active = (DocumentForm)this.ActiveMdiChild;
-                int zoomFactor = 10;
-                Size newSize = new Size((int)(Active.bitmap.Width * zoomFactor), (int)(Active.bitmap.Height * zoomFactor));
-                Active.bitmap = new Bitmap(Active.bitmap, newSize);
+                Active.bitmap.Zoom
 
             }
         }

@@ -57,12 +57,7 @@ namespace Paint
 
         private void DocumentForm_MouseUp(object sender, MouseEventArgs e)
         {
-            Graphics g = Graphics.FromImage(bitmap);
 
-            g.DrawLine(new Pen(MainForm.Color, MainForm.Width), x, y, e.X, e.Y);
-            x = e.X;
-            y = e.Y;
-            Invalidate();
         }
 
         private void DocumentForm_Load(object sender, EventArgs e)
