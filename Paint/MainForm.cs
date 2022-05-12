@@ -183,7 +183,7 @@ namespace Paint
             if (this.ActiveMdiChild != null)
             {
                 DocumentForm Active = (DocumentForm)this.ActiveMdiChild;
-                Active.bitmap.Zoom
+                
 
             }
         }
